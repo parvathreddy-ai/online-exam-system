@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Exam Instructions{% endblock %}
+
+{% block content %}
+
+<div class="exam-container">
+
+    <h2>Exam Instructions</h2>
+
+    <ul>
+        <li>Exam duration: {{ duration }} minutes.</li>
+        <li>Do not switch tabs or windows.</li>
+        <li>Exam will auto-submit if you switch tabs twice.</li>
+        <li>Ensure stable internet connection.</li>
+    </ul>
+
+<button type="button" onclick="startExam()">Start Exam</button>
+
+</div>
+
+
+
+<script>
+function startExam() {
+    window.location.href = "/exam/{{ exam_id }}";
+}
+</script>
+
+{% endblock %}

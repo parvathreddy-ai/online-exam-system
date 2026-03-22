@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Online Exam{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='assets/logo.png') }}" class="logo">
+        <span class="college-name">College Examination Portal</span>
+    </div>
+
+</nav>
+
+<div class="main-content">
+    {% block content %}
+    {% endblock %}
+</div>
+<footer class="footer">
+    <p>© 2026 College Examination Portal | Developed by Department of CSE</p>
+</footer>
+</body>
+</html>

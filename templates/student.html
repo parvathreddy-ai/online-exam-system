@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+{% extends "base.html" %}
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="student-container">
+
+    <div class="student-top">
+        <h2>Available Exams</h2>
+        <a href="/logout">
+            <button class="logout-btn">Logout</button>
+        </a>
+    </div>
+
+    {% if exams %}
+    <div class="exam-grid">
+        {% for exam in exams %}
+        <div class="exam-card">
+            <h3>{{ exam[1] }}</h3>
+            <p><strong>Duration:</strong> {{ exam[2] }} minutes</p>
+            <a href="/instructions/{{ exam[0] }}">
+                <button>Start Exam</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>No exams available.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+</body>
+</html>

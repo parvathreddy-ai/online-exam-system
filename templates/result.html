@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Exam Result{% endblock %}
+
+{% block content %}
+
+<div class="result-container">
+    <div class="result-card">
+        <h2>Exam Completed</h2>
+
+        <div class="score-display">
+            {{ score }} / {{ total }}
+        </div>
+
+        <p class="percentage-text">
+            Percentage: {{ percentage }}%
+        </p>
+
+        {% if percentage|float >= 40 %}
+            <p class="result-status pass">Status: PASS</p>
+        {% else %}
+            <p class="result-status fail">Status: FAIL</p>
+        {% endif %}
+
+        <a href="/student">
+            <button>Back to Dashboard</button>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

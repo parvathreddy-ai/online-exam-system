@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Results Overview{% endblock %}
+
+{% block content %}
+
+<div class="admin-container">
+    <div class="admin-card">
+        <h2>Results Overview</h2>
+
+        {% if results %}
+        <table class="admin-table">
+            <tr>
+                <th>Student Name</th>
+                <th>VTU No</th>
+                <th>Exam</th>
+                <th>Score</th>
+                <th>Percentage</th>
+                <th>Status</th>
+            </tr>
+
+            {% for r in results %}
+            <tr>
+                <td>{{ r[0] }}</td>
+                <td>{{ r[1] }}</td>
+                <td>{{ r[2] }}</td>
+                <td>{{ r[3] }} / {{ r[4] }}</td>
+                <td>{{ r[5] }}%</td>
+                <td>
+                    {% if r[5]|float >= 40 %}
+                        <span class="pass">PASS</span>
+                    {% else %}
+                        <span class="fail">FAIL</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p>No results available.</p>
+        {% endif %}
+
+        <br>
+        <a href="/admin">
+            <button>Back to Admin</button>
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,240 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    background: #002147;
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 70px;
+    margin-right: 20px;
+}
+
+.college-name {
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.nav-right a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.nav-right a:hover {
+    text-decoration: underline;
+}
+
+/* Main Layout */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* Card */
+.card {
+    background: white;
+    padding: 30px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    background: #c8102e;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #a50e25;
+}
+
+.footer {
+    background: #002147;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    
+}
+
+.admin-top {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+
+
+/* Student Dashboard */
+
+.student-container {
+    width: 100%;
+}
+
+.student-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.logout-btn {
+    width: 120px;
+}
+
+.exam-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.exam-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.exam-card:hover {
+    transform: translateY(-4px);
+}
+
+
+
+/* Exam Page */
+
+.exam-container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.exam-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.exam-timer {
+    background: #c8102e;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.question-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.question-text {
+    margin-bottom: 15px;
+}
+
+.options label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.submit-section {
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+
+
+.result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.result-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    width: 400px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.score-display {
+    font-size: 48px;
+    font-weight: bold;
+    color: #002147;
+    margin: 20px 0;
+}
+
+.percentage-text {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.result-status {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.pass {
+    color: green;
+}
+
+.fail {
+    color: red;
+}
+
+
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.admin-table th,
+.admin-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.admin-table th {
+    background: #002147;
+    color: white;
+}

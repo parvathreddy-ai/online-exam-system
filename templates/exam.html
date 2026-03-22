@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Online Exam{% endblock %}
+
+{% block content %}
+
+<div id="startOverlay" class="overlay">
+    <div class="overlay-box">
+        <h2>Ready to Start Exam?</h2>
+        <p>Exam will begin in fullscreen mode.</p>
+        <button onclick="startExam()">Start Exam</button>
+    </div>
+</div>
+
+<div id="examContent" style="display:none;">
+
+<div class="exam-container">
+
+    <div class="exam-header">
+        <h2>Online Examination</h2>
+        <div class="exam-timer">
+            Time Left: <span id="timer"></span>
+        </div>
+    </div>
+
+    <form method="POST" action="/submit_exam/{{ exam_id }}">
+
+        {% for q in questions %}
+        <div class="question-card">
+            <p class="question-text">
+                <strong>Question {{ loop.index }}:</strong>
+                {{ q[2] }}
+            </p>
+
+            <div class="options">
+                <label>
+                    <input type="radio" name="q{{ q[0] }}" value="{{ q[3] }}" required>
+                    {{ q[3] }}
+                </label>
+
+                <label>
+                    <input type="radio" name="q{{ q[0] }}" value="{{ q[4] }}">
+                    {{ q[4] }}
+                </label>
+
+                <label>
+                    <input type="radio" name="q{{ q[0] }}" value="{{ q[5] }}">
+                    {{ q[5] }}
+                </label>
+
+                <label>
+                    <input type="radio" name="q{{ q[0] }}" value="{{ q[6] }}">
+                    {{ q[6] }}
+                </label>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="submit-section">
+            <button type="submit">Submit Exam</button>
+        </div>
+
+    </form>
+
+</div>
+</div>
+
+<script>
+
+let duration = {{ duration }} * 60;
+const timerDisplay = document.getElementById("timer");
+const form = document.querySelector("form");
+let warningCount = 0;
+
+function startExam() {
+    document.documentElement.requestFullscreen().then(() => {
+        document.getElementById("startOverlay").style.display = "none";
+        document.getElementById("examContent").style.display = "block";
+        startTimer();
+    }).catch(() => {
+        alert("Please allow fullscreen mode.");
+    });
+}
+
+function startTimer() {
+    let timer = duration;
+
+    const interval = setInterval(function () {
+        let minutes = Math.floor(timer / 60);
+        let seconds = timer % 60;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        timerDisplay.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            clearInterval(interval);
+            alert("Time is up! Submitting exam...");
+            form.submit();
+        }
+    }, 1000);
+}
+
+document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+        warningCount++;
+        alert("Warning! Do not switch tabs. Attempt: " + warningCount);
+
+        if (warningCount >= 2) {
+            alert("Multiple violations detected. Exam will be submitted.");
+            form.submit();
+        }
+    }
+});
+
+document.addEventListener("fullscreenchange", function () {
+    if (!document.fullscreenElement && document.getElementById("examContent").style.display === "block") {
+        alert("You exited fullscreen. Exam will be submitted.");
+        form.submit();
+    }
+});
+
+</script>
+
+{% endblock %}
